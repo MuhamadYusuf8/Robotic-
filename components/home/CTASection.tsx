@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Bot } from 'lucide-react';
+import { ArrowRight, Users, Calendar } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import { staggerContainer, fadeInUp, scaleIn } from '@/lib/utils/animations';
 
@@ -12,8 +13,6 @@ export default function CTASection() {
       {/* Background effects */}
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
       <div className="absolute inset-0 bg-radial-glow opacity-40" />
-
-      {/* Animated lines */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-blue/20 to-transparent" />
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
@@ -38,28 +37,29 @@ export default function CTASection() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.div variants={fadeInUp} className="inline-flex items-center justify-center w-20 h-20 rounded-full
-                border border-accent-blue/30 bg-accent-blue/10 mb-8 mx-auto">
-                <Bot size={36} className="text-accent-blue" />
+              {/* Logo */}
+              <motion.div variants={fadeInUp} className="flex justify-center mb-8">
+                <div className="relative w-20 h-20 drop-shadow-[0_0_20px_rgba(0,196,255,0.4)]">
+                  <Image src="/logo.png" alt="PURTC" fill className="object-contain" />
+                </div>
               </motion.div>
 
               <motion.p variants={fadeInUp} className="font-orbitron text-xs font-semibold text-accent-blue tracking-[0.3em] uppercase mb-4">
-                Ready to Transform?
+                Open for President University Students
               </motion.p>
 
               <motion.h2 variants={fadeInUp} className="text-text-primary mb-6 max-w-3xl mx-auto">
-                Experience the Future of{' '}
-                <span className="text-accent-blue glow-blue-text">Automation</span>{' '}
-                Today
+                Ready to Join{' '}
+                <span className="text-accent-blue glow-blue-text">PURTC?</span>
               </motion.h2>
 
               <motion.p variants={fadeInUp} className="text-text-secondary text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-                Schedule a personalized demo with our robotics engineers. We&apos;ll analyze your operations and
-                show you exactly how PURTC can transform your productivity and ROI.
+                Be part of a student community passionate about technology and robotics.
+                Find your division, develop your skills, and leave a real mark with us.
               </motion.p>
 
               <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/contact">
+                <Link href="/join">
                   <Button
                     variant="primary"
                     size="lg"
@@ -67,12 +67,12 @@ export default function CTASection() {
                     icon={<ArrowRight size={16} />}
                     iconPosition="right"
                   >
-                    Request a Demo
+                    Join PURTC
                   </Button>
                 </Link>
-                <Link href="/case-studies">
-                  <Button variant="ghost" size="lg">
-                    See Case Studies
+                <Link href="/divisions">
+                  <Button variant="ghost" size="lg" icon={<Users size={14} />} iconPosition="left">
+                    View Divisions
                   </Button>
                 </Link>
               </motion.div>
@@ -80,13 +80,13 @@ export default function CTASection() {
               {/* Trust indicators */}
               <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-6 mt-12 pt-8 border-t border-white/10">
                 {[
-                  'No commitment required',
-                  'Response within 24 hours',
-                  '30-day pilot program available',
+                  { icon: <Users size={14} />, text: '39 Active Members' },
+                  { icon: <Calendar size={14} />, text: 'Weekly Programs' },
+                  { icon: <ArrowRight size={14} />, text: '7 Divisions Available' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-text-secondary text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent-blue" />
-                    {item}
+                    <span className="text-accent-blue">{item.icon}</span>
+                    {item.text}
                   </div>
                 ))}
               </motion.div>

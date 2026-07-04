@@ -21,7 +21,7 @@ export default function StatsSection() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-white/10"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-white/10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -40,7 +40,6 @@ export default function StatsSection() {
                   <AnimatedCounter
                     target={stat.value}
                     suffix={stat.suffix}
-                    isDecimal={stat.isDecimal}
                     duration={2000}
                   />
                 </div>

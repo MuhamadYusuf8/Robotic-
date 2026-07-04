@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import StatsSection from '@/components/home/StatsSection';
-import ProductTeaser from '@/components/home/ProductTeaser';
-import TechHighlight from '@/components/home/TechHighlight';
-import TestimonialSlider from '@/components/home/TestimonialSlider';
+import DivisionsPreview from '@/components/home/DivisionsPreview';
+import ProgramsSection from '@/components/home/ProgramsSection';
+import TimelineSection from '@/components/home/TimelineSection';
 import CTASection from '@/components/home/CTASection';
 
 const HeroSection = dynamic(() => import('@/components/home/HeroSection'), {
@@ -11,9 +11,15 @@ const HeroSection = dynamic(() => import('@/components/home/HeroSection'), {
 });
 
 export const metadata: Metadata = {
-  title: 'PURTC Robotics — Next-Generation Industrial Automation',
+  icons: {
+    // FIXED: Changed 'public/logo.png' to '/logo.png'
+    icon: '/logo.png',
+    shortcut: '/logo.png', // Optional: Helps older browsers
+    apple: '/logo.png',    // Optional: For iOS home screen bookmarks
+  },
+  title: 'PURTC — President University Robotic & Technology Club',
   description:
-    'PURTC Robotics delivers cutting-edge autonomous robots for industrial automation, logistics, and enterprise operations. Trusted by 200+ enterprises across 47 countries.',
+    'PURTC is a student community for technology and robotics at President University, Cikarang. Build. Innovate. Lead.',
 };
 
 export default function HomePage() {
@@ -21,9 +27,9 @@ export default function HomePage() {
     <>
       <HeroSection />
       <StatsSection />
-      <ProductTeaser />
-      <TechHighlight />
-      <TestimonialSlider />
+      <DivisionsPreview />
+      <ProgramsSection />
+      <TimelineSection />
       <CTASection />
     </>
   );

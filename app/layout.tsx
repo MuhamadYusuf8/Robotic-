@@ -19,42 +19,44 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://purtc.com"),
+  metadataBase: new URL("https://purtc.presuniv.ac.id"),
   title: {
-    default: "PURTC Robotics — Next-Generation Industrial Automation",
-    template: "%s | PURTC Robotics",
+    default: "PURTC — President University Robotic & Technology Club",
+    template: "%s | PURTC",
   },
   description:
-    "PURTC Robotics delivers cutting-edge autonomous robots for industrial automation, logistics, and enterprise operations. Trusted by 200+ enterprises across 47 countries.",
+    "PURTC is a student community for technology and robotics at President University, Cikarang. Build. Innovate. Lead. Join us and be part of the change.",
   keywords: [
-    "robotics",
-    "industrial automation",
-    "autonomous robots",
-    "AI robotics",
-    "enterprise robots",
-    "manufacturing automation",
+    "PURTC",
+    "President University",
+    "robotics club",
+    "technology club",
+    "technology students",
+    "robotics community",
+    "Cikarang",
+    "President University club",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://purtc.com",
-    siteName: "PURTC Robotics",
-    title: "PURTC Robotics — Next-Generation Industrial Automation",
+    url: "https://purtc.presuniv.ac.id",
+    siteName: "PURTC",
+    title: "PURTC — President University Robotic & Technology Club",
     description:
-      "Cutting-edge autonomous robots for industrial automation and enterprise operations.",
+      "Student community for technology and robotics at President University. Build. Innovate. Lead.",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "PURTC Robotics",
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "PURTC Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PURTC Robotics",
-    description: "Next-Generation Industrial Automation",
+    title: "PURTC — Robotic & Technology Club",
+    description: "President University Robotic & Technology Club",
   },
   robots: {
     index: true,

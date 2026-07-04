@@ -1,29 +1,22 @@
 export const stats = [
   {
-    value: 500,
-    suffix: "+",
-    label: "Robots Deployed",
-    description: "Operational worldwide",
-  },
-  {
-    value: 47,
+    value: 39,
     suffix: "",
-    label: "Countries Served",
-    description: "Global presence",
+    label: "Active Members",
+    description: "Ardentis Cabinet",
   },
   {
-    value: 99.7,
-    suffix: "%",
-    label: "Uptime Rate",
-    description: "Industry-leading reliability",
-    isDecimal: true,
+    value: 7,
+    suffix: "",
+    label: "Active Divisions",
+    description: "Focus areas & expertise",
   },
   {
-    value: 200,
-    suffix: "+",
-    label: "Enterprise Clients",
-    description: "Fortune 500 trusted",
-  },
+    value: 2,
+    suffix: "",
+    label: "Running Programs",
+    description: "Weekly Training & CRAFT",
+  },  
 ];
 
 export const testimonials = [

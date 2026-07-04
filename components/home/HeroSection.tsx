@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, ChevronDown } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import { fadeInUp, staggerContainer, heroTextVariants } from '@/lib/utils/animations';
 
@@ -36,18 +36,12 @@ export default function HeroSection() {
       positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
 
-      // Mix blue and white
       const isBlue = Math.random() > 0.3;
       if (isBlue) {
-        colors[i * 3] = 0;
-        colors[i * 3 + 1] = 0.77;
-        colors[i * 3 + 2] = 1;
+        colors[i * 3] = 0; colors[i * 3 + 1] = 0.77; colors[i * 3 + 2] = 1;
       } else {
-        colors[i * 3] = 0.94;
-        colors[i * 3 + 1] = 0.96;
-        colors[i * 3 + 2] = 1;
+        colors[i * 3] = 0.94; colors[i * 3 + 1] = 0.96; colors[i * 3 + 2] = 1;
       }
-
       sizes[i] = Math.random() * 2 + 0.5;
     }
 
@@ -56,18 +50,10 @@ export default function HeroSection() {
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
-    const material = new THREE.PointsMaterial({
-      size: 0.03,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.7,
-      sizeAttenuation: true,
-    });
-
+    const material = new THREE.PointsMaterial({ size: 0.03, vertexColors: true, transparent: true, opacity: 0.7, sizeAttenuation: true });
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
-    // Secondary particle layer (slower, larger)
     const positions2 = new Float32Array(400 * 3);
     for (let i = 0; i < 400; i++) {
       positions2[i * 3] = (Math.random() - 0.5) * 15;
@@ -80,8 +66,7 @@ export default function HeroSection() {
     const particles2 = new THREE.Points(geo2, mat2);
     scene.add(particles2);
 
-    let mouseX = 0;
-    let mouseY = 0;
+    let mouseX = 0, mouseY = 0;
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
       mouseY = -(e.clientY / window.innerHeight - 0.5) * 0.5;
@@ -93,12 +78,10 @@ export default function HeroSection() {
     const animate = () => {
       animId = requestAnimationFrame(animate);
       time += 0.003;
-
       particles.rotation.y = time * 0.05 + mouseX * 0.3;
       particles.rotation.x = time * 0.02 + mouseY * 0.2;
       particles2.rotation.y = -time * 0.03 + mouseX * 0.1;
       particles2.rotation.x = time * 0.015;
-
       renderer.render(scene, camera);
     };
     animate();
@@ -146,8 +129,8 @@ export default function HeroSection() {
           <motion.div variants={heroTextVariants}>
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-accent-blue/30 bg-accent-blue/5">
               <div className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
-              <span className="font-orbitron text-xs font-semibold text-accent-blue tracking-[0.3em] uppercase">
-                Next-Generation Robotics
+              <span className="font-orbitron text-xs font-semibold text-accent-blue tracking-[0.2em] uppercase">
+                President University Robotic &amp; Technology Club
               </span>
               <div className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
             </div>
@@ -156,8 +139,8 @@ export default function HeroSection() {
           {/* H1 */}
           <motion.div variants={heroTextVariants}>
             <h1 className="text-text-primary max-w-5xl">
-              <span className="block gradient-text">THE FUTURE OF</span>
-              <span className="block text-text-primary">INDUSTRIAL AUTOMATION</span>
+              <span className="block gradient-text">BUILD.</span>
+              <span className="block text-text-primary">INNOVATE. LEAD.</span>
             </h1>
           </motion.div>
 
@@ -166,13 +149,13 @@ export default function HeroSection() {
             variants={heroTextVariants}
             className="text-text-secondary text-lg lg:text-xl max-w-2xl leading-relaxed"
           >
-            PURTC delivers precision-engineered autonomous robots that redefine what&apos;s possible in
-            manufacturing, logistics, healthcare, and beyond. Trusted by 200+ enterprises across 47 countries.
+            A student community building the future through technology and robotics.
+            Join us — explore, create, and leave a real mark at President University.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-            <Link href="/products">
+            <Link href="/join">
               <Button
                 variant="primary"
                 size="lg"
@@ -180,49 +163,27 @@ export default function HeroSection() {
                 icon={<ArrowRight size={16} />}
                 iconPosition="right"
               >
-                Explore Our Robots
+                Join PURTC
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href="/events">
               <Button
                 variant="outline"
                 size="lg"
-                icon={<Play size={14} fill="currentColor" />}
+                icon={<Zap size={14} />}
                 iconPosition="left"
               >
-                Watch Demo
+                View Programs
               </Button>
             </Link>
-          </motion.div>
-
-          {/* Stats preview */}
-          <motion.div
-            variants={fadeInUp}
-            className="flex items-center gap-8 mt-8 pt-8 border-t border-white/10"
-          >
-            {[
-              { value: '500+', label: 'Robots Deployed' },
-              { value: '47', label: 'Countries' },
-              { value: '99.7%', label: 'Uptime' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="font-orbitron text-2xl font-bold text-accent-blue">{stat.value}</div>
-                <div className="text-text-secondary text-xs tracking-wider mt-0.5">{stat.label}</div>
-              </div>
-            ))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <span className="font-orbitron text-[10px] text-text-secondary tracking-[0.3em]">SCROLL</span>
-        <ChevronDown size={16} className="text-accent-blue" />
-      </motion.div>
     </section>
+
+
+
+
   );
 }

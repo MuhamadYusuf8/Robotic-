@@ -2,17 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Bot } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import { menuSlideIn } from '@/lib/utils/animations';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
-  { href: '/technology', label: 'Technology' },
-  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/about', label: 'About' },
+  { href: '/divisions', label: 'Divisions' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/events', label: 'Events' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -52,21 +54,15 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative">
-                <Bot
-                  size={28}
-                  className="text-accent-blue transition-all duration-300 group-hover:drop-shadow-glow"
+            <Link href="/" className="flex items-center group" aria-label="PURTC Home">
+              <div className="relative w-12 h-12 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(0,196,255,0.7)]">
+                <Image
+                  src="/logo.png"
+                  alt="PURTC Logo"
+                  fill
+                  className="object-contain"
+                  priority
                 />
-                <div className="absolute inset-0 bg-accent-blue/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-orbitron text-xl font-bold text-text-primary tracking-[0.1em]">
-                  PURTC
-                </span>
-                <span className="font-orbitron text-[9px] text-accent-blue tracking-[0.3em]">
-                  ROBOTICS
-                </span>
               </div>
             </Link>
 
@@ -91,10 +87,16 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden lg:flex items-center gap-4">
-              <Link href="/contact">
+            <div className="hidden lg:flex items-center gap-6">
+              <Link 
+                href="/login" 
+                className="font-orbitron text-xs tracking-[0.15em] uppercase text-text-secondary hover:text-text-primary transition-colors duration-300"
+              >
+                Login
+              </Link>
+              <Link href="/join">
                 <Button variant="outline" size="sm" glowEffect className="border-accent-blue/70">
-                  Request Demo
+                  Join PURTC
                 </Button>
               </Link>
             </div>
@@ -141,7 +143,12 @@ export default function Navbar() {
               exit="exit"
             >
               <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <span className="font-orbitron text-text-primary tracking-[0.15em]">MENU</span>
+                <div className="flex items-center gap-3">
+                  <div className="relative w-8 h-8">
+                    <Image src="/logo.png" alt="PURTC" fill className="object-contain" />
+                  </div>
+                  <span className="font-orbitron text-text-primary tracking-[0.15em] text-sm">PURTC</span>
+                </div>
                 <button onClick={() => setMobileOpen(false)} className="text-text-secondary hover:text-text-primary">
                   <X size={20} />
                 </button>
@@ -168,10 +175,13 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              <div className="p-6 border-t border-white/10">
-                <Link href="/contact" className="block">
+              <div className="p-6 border-t border-white/10 space-y-4">
+                <Link href="/login" className="block text-center font-orbitron text-sm tracking-[0.15em] uppercase text-text-secondary hover:text-accent-blue transition-colors duration-300">
+                  Login
+                </Link>
+                <Link href="/join" className="block">
                   <Button variant="primary" size="md" glowEffect className="w-full justify-center">
-                    Request Demo
+                    Join PURTC
                   </Button>
                 </Link>
               </div>
